@@ -1,0 +1,101 @@
+# Base64 이미지 태그 변환 전 목록
+# 추출일시: 2025-12-30 14:11:42
+# 대상 문서 수: 16건
+#================================================================================
+
+source_id: 2978801
+변환 후: <img src="/PMS_SITE-U7OI43JLDSMO/approval/attach/approval_2020_img/apr2978801/0.jpg"/>
+변환 전 [1]: <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABGAAAAM3CAYAAAByIiZoAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAP+lSU...
+
+--------------------------------------------------------------------------------
+
+source_id: 2983943
+변환 후: <img src="/PMS_SITE-U7OI43JLDSMO/approval/attach/approval_2020_img/apr2983943/0.jpg"/>
+변환 전 [1]: <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABFMAAAUOCAYAAACxQ3wMAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAP+lSU...
+
+--------------------------------------------------------------------------------
+
+source_id: 2985244
+변환 후: <img src="/PMS_SITE-U7OI43JLDSMO/approval/attach/approval_2020_img/apr2985244/0.jpg"/>
+변환 전 [1]: <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA7YAAANUCAYAAACHdrERAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAP+lSU...
+
+--------------------------------------------------------------------------------
+
+source_id: 3091219
+변환 후: <img src="/PMS_SITE-U7OI43JLDSMO/approval/attach/approval_2020_img/apr3091219/0.jpg"/>
+변환 전 [1]: <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA3oAAALBCAYAAAAOKdN6AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAP+lSU...
+
+--------------------------------------------------------------------------------
+
+source_id: 3097823
+변환 후: <img src="/PMS_SITE-U7OI43JLDSMO/approval/attach/approval_2020_img/apr3097823/0.jpg"/>
+변환 전 [1]: <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABJwAAAQGCAYAAABy06D5AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAP+lSU...
+
+--------------------------------------------------------------------------------
+
+source_id: 3120072
+변환 후: <img src="/PMS_SITE-U7OI43JLDSMO/approval/attach/approval_2020_img/apr3120072/0.jpg"/>
+변환 전 [1]: <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABHkAAARWCAYAAACvlm47AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAP+lSU...
+
+--------------------------------------------------------------------------------
+
+source_id: 3187289
+변환 후: <img src="/PMS_SITE-U7OI43JLDSMO/approval/attach/approval_2020_img/apr3187289/0.jpg"/>
+변환 전 [1]: <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAxcAAAMFCAYAAAAGPgusAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAP+lSU...
+
+--------------------------------------------------------------------------------
+
+source_id: 3190258
+변환 후: <img src="/PMS_SITE-U7OI43JLDSMO/approval/attach/approval_2020_img/apr3190258/0.jpg"/>
+변환 전 [1]: <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABCIAAAN/CAYAAAALZnn0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAP+lSU...
+
+--------------------------------------------------------------------------------
+
+source_id: 3202897
+변환 후: <img src="/PMS_SITE-U7OI43JLDSMO/approval/attach/approval_2020_img/apr3202897/0.jpg"/>
+변환 전 [1]: <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABKQAAAOuCAYAAAA5H884AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAP+lSU...
+
+--------------------------------------------------------------------------------
+
+source_id: 3271155
+변환 후: <img src="/PMS_SITE-U7OI43JLDSMO/approval/attach/approval_2020_img/apr3271155/0.jpg"/>
+변환 전 [1]: <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABIsAAATUCAYAAADoV4dMAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAP+lSU...
+
+--------------------------------------------------------------------------------
+
+source_id: 3288192
+변환 후: <img src="/PMS_SITE-U7OI43JLDSMO/approval/attach/approval_2020_img/apr3288192/0.jpg"/>
+변환 전 [1]: <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABCEAAAS3CAYAAADYTWCgAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAP+lSU...
+
+--------------------------------------------------------------------------------
+
+source_id: 3307760
+변환 후: <img src="/PMS_SITE-U7OI43JLDSMO/approval/attach/approval_2020_img/apr3307760/0.jpg"/>
+변환 전 [1]: <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA7UAAADZCAYAAAD/hxeJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAP+lSU...
+
+--------------------------------------------------------------------------------
+
+source_id: 5637771
+변환 후: <img src="/PMS_SITE-U7OI43JLDSMO/approval/attach/approval_2020_img/apr5637771/0.jpg"/>
+변환 전 [1]: <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+AAAAPGCAYAAABj0vBWAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAP+lSU...
+
+--------------------------------------------------------------------------------
+
+source_id: 5641483
+변환 후: <img src="/PMS_SITE-U7OI43JLDSMO/approval/attach/approval_2020_img/apr5641483/0.jpg"/>
+변환 전 [1]: <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABG0AAADyCAYAAAD3EThCAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAP+lSU...
+
+--------------------------------------------------------------------------------
+
+source_id: 5649101
+변환 후: <img src="/PMS_SITE-U7OI43JLDSMO/approval/attach/approval_2020_img/apr5649101/0.jpg"/>
+변환 전 [1]: <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABG8AAAVnCAYAAADsd0AoAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAP+lSU...
+
+--------------------------------------------------------------------------------
+
+source_id: 5810171
+변환 후: <img src="/PMS_SITE-U7OI43JLDSMO/approval/attach/approval_2020_img/apr5810171/0.jpg"/>
+변환 전 [1]: <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAyUAAAG5CAYAAACQr5uOAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAJmxSU...
+
+--------------------------------------------------------------------------------
+
