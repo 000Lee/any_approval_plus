@@ -506,7 +506,6 @@ OUTPUT_FILE = "documents_09.cmds"
 ```
 
 ---
-❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗여기서부터 ❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗
 ## 실행 순서 가이드
 
 ### Phase 1: 조직도 데이터 준비
@@ -530,21 +529,24 @@ OUTPUT_FILE = "documents_09.cmds"
 ### Phase 4: 첨부파일 처리
 ```
 7. empty_path_export.ipynb      → 누락 첨부파일 목록 추출 (CSV 저장)
-   ↓ [수동] Java 크롤러(AnyFivePlusCrawler_attaches.java)로 누락 파일 다운로드
+   ↓ ⚠️ Java 크롤러(AnyFivePlusCrawler_attaches.java)로 누락 파일 다운로드
 8. attaches_transform.ipynb     → 첨부파일 경로 변환
 ```
 
 ### Phase 5: 이미지 처리
 ```
    ⚠️ [수동] base64 이미지 16개 사전 다운로드 (상세: 3-2. 이미지 처리 참조)
-9. convert_base64_images_db.ipynb  → base64 이미지 변환
-10. cleanup_office_images.ipynb    → 레거시 이미지 태그 제거
+9. convert_base64_images_db.ipynb  → base64 이미지 태그 경로 변환
+10. cleanup_office_images.ipynb    → 불필요한 이미지 태그 제거
    ⚠️ [수동] 개별 이미지 태그 수정/삭제 (상세: 수동으로 DB에서 수정해야하는 이미지 목록 참조)
    ⚠️ [SQL] 이미지 경로 일괄 변경 쿼리 실행
 ```
-### 스타일태그 처리
+### Phase 6: 스타일태그 처리
+```
+⚠️ [SQL] 스타일태그 일괄 변경 쿼리 실행
+```
 
-### Phase 6: 검증 및 보정
+### Phase 7: 검증 및 보정
 ```
 11. verify_action_type.ipynb   → actionType 검증/수정 (RETURN 상태로 변환)
 12. RETURN 변환.ipynb          → RETURN → APPROVAL 변환 및 [반려] prefix 추가
@@ -553,38 +555,11 @@ OUTPUT_FILE = "documents_09.cmds"
 14. add_year_column.ipynb      → year 컬럼 추가
 ```
 
-### Phase 7: 내보내기
+### Phase 8: 내보내기
 ```
 15. export_documents_v2.ipynb  → .cmds 파일 생성
 ```
 ---
-
-## 주의사항
-
-### ⚠️ 필수 백업
-모든 스크립트 실행 전 DB 백업을 권장합니다:
-```sql
-mysqldump -u root -p any_approval > backup_YYYYMMDD.sql
-```
-
-### ⚠️ Dry Run 모드
-대부분의 스크립트는 실제 UPDATE 전 Dry Run(미리보기) 기능을 제공합니다:
-```python
-CONFIRM = False  # True로 변경 시 실제 UPDATE 실행
-```
-
-### ⚠️ CSV 경로 설정
-각 스크립트 상단의 CSV 파일 경로를 실제 환경에 맞게 수정하세요:
-```python
-IN_EMPLOYEE_CSV = './in_employee.csv'
-OUT_EMPLOYEE_CSV = './out_employee.csv'
-```
-
-### ⚠️ 배치 처리
-대량 데이터 처리 시 배치 크기 조정 가능:
-```python
-BATCH_SIZE = 1000  # 기본값
-```
 
 ### 📁etc 폴더
 - etc 폴더는 cmds 변환 과정에서 사용된 일회성 스크립트와 개발 중 생성된 이전 버전 코드를 보존한 것입니다. 핵심 운영 코드에 포함되지 않으며, 향후 유사 작업 시 참조 목적으로 보존하였습니다.
