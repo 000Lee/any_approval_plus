@@ -565,14 +565,14 @@ OUTPUT_FILE = "documents_09.cmds"
 - etc 폴더는 cmds 변환 과정에서 사용된 일회성 스크립트와 개발 중 생성된 이전 버전 코드를 보존한 것입니다. 핵심 운영 코드에 포함되지 않으며, 향후 유사 작업 시 참조 목적으로 보존하였습니다.
 -아래는 항목별로 파일의 기능을 분류한 정보입니다.
 
-- 조직도 관리
+#### 조직도 관리
 | 파일명 | 설명 |
 |--------|------|
 | `DB 조직도 반영 검증.ipynb` | DB에 반영된 조직도 정보(drafter, activities)와 CSV 원본 데이터의 일치 여부 검증 |
 | `DB에 조직도 다시 반영하기.ipynb` | 인사정보 CSV 기준으로 documents 테이블의 drafter/activities 정보 일괄 업데이트 |
 | `DB에서 퇴사자 관련 이슈 수정.ipynb` | 퇴사자 관련 DB 데이터 이슈 수정 |
 
-- 퇴사자 처리
+#### 퇴사자 처리
 | 파일명 | 설명 |
 |--------|------|
 | `퇴사자.ipynb` | 현재 조직도에 없는 인원을 퇴사자로 식별하여 명단 추출 (cmds 파일 내 이름과 인사정보 CSV 비교) |
@@ -580,7 +580,7 @@ OUTPUT_FILE = "documents_09.cmds"
 
 > **참고**: 퇴사자 명단은 별도 제공되지 않아, 기존 cmds 데이터와 타겟 시스템 조직도를 대조하여 현행 조직도에 존재하지 않는 인원을 퇴사자로 분류하였습니다.
 
-- 데이터 변환
+#### 데이터 변환
 | 파일명 | 설명 |
 |--------|------|
 | `convert_base64_images_v2.ipynb` | 문서 내 Base64 인코딩 이미지 태그를 파일 경로 참조로 변환 |
@@ -588,28 +588,28 @@ OUTPUT_FILE = "documents_09.cmds"
 | `convert_referrers_safe.ipynb` | referrers 변환 (안전 버전, 공백 처리 개선) |
 | `img_src_transform.ipynb` | documents 테이블의 img src 경로에 PMS 접두사 추가 |
 
-- 데이터 정합성 검증
+#### 데이터 정합성 검증
 | 파일명 | 설명 |
 |--------|------|
 | `verify_action_type_with_time.ipynb` | actionType 데이터의 시간 기반 정합성 검증 |
 | `리스트 차이.ipynb` | 두 데이터셋 간 차집합 비교 |
 | `스타일태그 2개있는거 확인.ipynb` | HTML 문서 내 중복 style 태그 검출 |
 
-- 데이터 수정
+#### 데이터 수정
 | 파일명 | 설명 |
 |--------|------|
 | `fix_activities_order(2).ipynb` | activities 배열 순서 정렬 |
 | `fix_docnum(1).ipynb` | 문서번호(docNum) 형식 수정 |
 | `referrers_업데이트.ipynb` | referrers 필드 업데이트 |
 
-- 파일 처리
+#### 파일 처리
 | 파일명 | 설명 |
 |--------|------|
 | `cmds maker.ipynb` | cmds 형식 파일 생성 |
 | `split_yearly.ipynb` | cmds 파일을 createdAt 기준 연도별로 분리 (sourceId 오름차순 정렬) |
 | `export_documents.ipynb` | 문서 데이터 내보내기 |
 
-- 📊 데이터 파일
+#### 📊 데이터 파일
 | 파일명 | 설명 |
 |--------|------|
 | `멤버목록_2025-12-24 (1).xlsx` | 사원 정보 목록 |
