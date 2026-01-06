@@ -561,6 +561,14 @@ OUTPUT_FILE = "documents_09.cmds"
 ```
 ---
 
+### 댓글
+- 댓글관련 코드는 [any_htmlver](https://github.com/000Lee/any_htmlver.git)과 [any_crawling](https://github.com/000Lee/any_crawling.git)에 있습니다.
+- any_htmlver의 댓글크롤링폴더에서 "해당 기간 내에 있는 문서 ID만 txt파일로 가져오는 파이썬코드.ipynb"로 대상 문서 ID를 추출하고
+- any_crawling의 AnyFiveCommentCrawler.java로 크롤링을 실시하고
+- any_htmlver의 갯수세기.ipynb로 크롤링이 완료된 갯수를 확인하고 
+- any_htmlver의 comments_to_cmds.ipynb로 DB의 comments 테이블을 addDocumentComment 형식의 cmds 파일로 변환합니다
+- any_htmlver의 comment_validation.ipynb로 '크롤링한 결재댓글'과 '소스사이트에서 다운받은 html파일'을 서로 비교하여 정합성을 검사합니다.
+
 ### 📁etc 폴더
 - etc 폴더는 cmds 변환 과정에서 사용된 일회성 스크립트와 개발 중 생성된 이전 버전 코드를 보존한 것입니다. 핵심 운영 코드에 포함되지 않으며, 향후 유사 작업 시 참조 목적으로 보존하였습니다.
 -아래는 항목별로 파일의 기능을 분류한 정보입니다.
