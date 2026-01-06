@@ -292,7 +292,6 @@ SELECT * FROM documents WHERE source_id = '2978801';
 **처리 결과**: 16개 문서의 base64 이미지 변환
 
 ---
-
 #### `cleanup_office_images.ipynb`
 **목적**: doc_body에서 더 이상 접근 불가능한 office.anyfive.com 이미지 태그 제거
 
@@ -418,7 +417,30 @@ WHERE doc_body LIKE '%src="approval_%';
 ```
 
 ---
+### 3-3. 스타일태그 처리
+```
+DB에서 쿼리문 실행하여 처리합니다.
 
+-- 스타일태그 (여러개 -> 한개) 수정
+-- 1. 모든 style 태그 제거
+UPDATE documents
+SET doc_body = REGEXP_REPLACE(doc_body, '<style[^>]*>[^<]*</style>', '')
+WHERE doc_body LIKE '%<style%';
+
+-- 2. 올바른 CSS 추가 (문서 맨 끝에)
+UPDATE documents
+SET doc_body = CONCAT(doc_body, '<style>.content{width:80% !important;}.content table{width:100% !important;}@CHARSET \"UTF-8\";span,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,blockquote,address,pre,cite,form,fieldset,caption,input,textarea,select{margin:0;padding:0;}p{font-size:12px;font-family:MalgunGothic;margin-top:0px;margin-bottom:0px;}h1,h2,h3,h4,h5,h6{font-size:100%;}fieldset,img,abbr,acronym{border:0 none}ul,ol{list-style:none !important;padding-left:0 !important;margin-left:0 !important;}address,caption,em,cite{font-weight:normal;font-style:normal}ins{text-decoration:none}del{text-decoration:line-through}hr{display:none}a{text-decoration:none;cursor:pointer color:#787878;}a:link{text-decoration:none;color:#787878;}a:visited{text-decoration:none;color:#787878;}a:active,a:focus{text-decoration:none;color:#787878;}a:hover{text-decoration:none;color:#787878}select{vertical-align:middle}.clear{display:block;float:none;clear:both;height:0;width:100%;font-size:0 !important;line-height:0 !important;overflow:hidden;margin:0 !important;padding:0 !important;}#p_wrapper{width:100%;}#header{width:100%;height:45px;background:url(../../images/apr/title_bg.gif) 0 bottom repeat-x;background-color:#FFFFFF;position:fixed;top:0px;z-index:10;}#header h1{margin:12px 0 0 10px;float:left;}#header .menu{margin:14px 0 0 20px;float:left;}#header .menu li{position:relative;float:left;font-family:\"\";font-size:11px;color:#5d5d5d;}#header .menu li label{position:absolute;top:0px;left:15px;top:2px\\0IE8+9;}#header .btn{font-family:\"\";font-size:12px;float:right;margin:8px 13px 0 0;}#header .btn a.print{display:inline-block;padding:4px;background:#fffff;border:1px solid #dadada;width:40px;height:14px;text-align:center;}#header .btn a.print:hover,#header .btn a.close:hover{display:inline-block;padding:4px;background:#949297;border:1px solid #7a7a7a;width:40px;height:14px;text-align:center;color:#FFF;}#header .btn a.close{display:inline-block;padding:4px;margin-left:4px;background:#fffff;border:1px solid #dadada;width:40px;height:14px;text-align:center;}.content{border:1px solid #ffffff;margin:15px 10px 0 10px;padding:10px 5px 6px 5px;min-width:850px;}#middle .content h1{width:100%;font-size:25px;display:inline-block;font-family:\"\";text-align:center;}#middle .content h2{width:100%;font-size:25px;display:inline-block;font-family:\"\";text-align:center;}#middle .content .company{float:left;font-family:\"\";font-size:14px;font-weight:bold;margin:10px 0 0 10px;}#middle .content .team{float:right;font-family:\"\";font-size:14px;font-weight:bold;margin:10px 10px 0 0;}.table01_box{border-top:1px #000000 solid;margin:5px 0 0 0;min-width:850px;}.table01{width:100%;border-top:1px #000000 solid;table-layout:fixed;border-collapse:collapse;font-family:\"\";font-size:12px;}.table01 td div.bg01{background:#FFF;height:25px;display:table-cell;vertical-align:middle;width:300px;}.table01 td div.bg02{background:#FFF;height:77px;position:relative;z-index:2;}.table01 td div.bg02 .sign{position:absolute;z-index:1;top:0px;left:50%;margin-left:-38px;height:77px;opacity:0.3;filter:alpha(opacity=30);}.table01 td div.bg02 .text{position:absolute;z-index:2;top:0px;height:77px;left:50%;width:74px;margin-left:-37px;display:table-cell;vertical-align:middle;}.table01 td div.bg02 .text ul{position:relative;height:77px;width:74px;display:table-cell;vertical-align:middle;}.table01 caption{display:none;}.table01 th{background:#e6e6e6;border-bottom:1px #000000 solid;border-left:1px #000000 solid;border-top:1px #000000 solid;text-align:center;height:25px;min-width:74px;}.table01 td{border-bottom:1px #000000 solid;border-top:1px #000000 solid;border-left:1px #000000 solid;text-align:center;background:#e6e6e6;line-height:16px;}.boeder_left{border-right:1px #000000 solid;}.boeder_top{border-top:1px #000000 solid;}#middle .boeder_bnone{border-bottom:none;}.table01 span{display:block;}.table01 span.red{color:#F00;font-weight:bold;font-size:12px;}.table02{table-layout:fixed;border-collapse:collapse;font-family:\"\";font-size:12px;width:100%;}.table02 td div.bg01{background:#FFF;height:25px;display:table-cell;vertical-align:middle;width:300px;}.table02 td div.bg02{background:#FFF;display:table-cell;vertical-align:middle;width:300px;overflow:hidden;}.table02 th div.bg02{background:#FFF;height:77px;display:table-cell;vertical-align:middle;width:300px;}.table02 caption{display:none;}.table02 th{background:#e6e6e6;border-bottom:1px #000000 solid;border-left:1px #000000 solid;text-align:center;height:25px;}.table02 td{border-top:1px #000000 solid;border-bottom:1px #000000 solid;border-left:1px #000000 solid;text-align:center;background:#e6e6e6;line-height:16px;}.table02 span{display:block;}.table02 span.red{color:#F00;font-weight:bold;font-size:12px;}.table02_box{border-top:1px #000000 solid;margin:5px 0 0 0;min-width:850px;}.table03{width:100%;border-top:1px #000000 solid;table-layout:fixed;border-collapse:collapse;font-family:\"\";font-size:12px;}.table03 caption{display:none;}.table03 th{background:#e6e6e6;border-bottom:1px #000000 solid;border-left:1px #000000 solid;border-top:1px #000000 solid;text-align:center;height:25px;}.table03 td{border-bottom:1px #000000 solid;border-top:1px #000000 solid;border-left:1px #000000 solid;border-right:1px #000000 solid;line-height:14px;padding-left:10px;}.table03_box{border-top:1px #000000 solid;margin:5px 0 0 5px;}.table04{width:100%;border-top:1px #000000 solid;table-layout:fixed;border-collapse:collapse;font-family:\"\";font-size:12px;}.table04 .user{color:#003399;}.table04 .user img{position:relative;top:2px;margin-right:5px;}.table04 .file img,.table04 .doc img{position:relative;top:1px;margin-right:5px;}.table04_box{border-top:1px #000000 solid;margin:5px 0 0 0;width:100%;min-width:850px;}.table04 caption{display:none;}.table04 th{background:#e6e6e6;border-bottom:1px #000000 solid;border-left:1px #000000 solid;border-top:1px #000000 solid;text-align:center;height:25px;}.table04 td{border-bottom:1px #000000 solid;border-top:1px #000000 solid;border-left:1px #000000 solid;border-right:1px #000000 solid;line-height:16px;padding:10px;}.table05_box{border-top:1px #000000 solid;margin:5px 0 0 0;width:100%;min-width:850px;}.content_box{border:1px #000000 solid;margin:5px 0 0 0;word-break:break-all;overflow:hidden;min-width:819px;}td.bgw{background:#FFF;}@media print{#header{display:none;}}.approvalOpinionCode0{padding:0px 5px 2px 5px;border-radius:3px;color:#fff;background-color:#f38405;font-family:Malgun Gothic,,dotum,,Gulim,Helvetica,AppleGothic,Tahoma,Verdana;}.approvalOpinionCode1{padding:0px 5px 2px 5px;border-radius:3px;color:#fff;background-color:#69F;font-family:Malgun Gothic,,dotum,,Gulim,Helvetica,AppleGothic,Tahoma,Verdana;}.approvalOpinionCode2{padding:0px 5px 2px 5px;border-radius:3px;color:#fff;background-color:#9FC93C;font-family:Malgun Gothic,,dotum,,Gulim,Helvetica,AppleGothic,Tahoma,Verdana;}.approvalOpinionCode3{padding:0px 5px 2px 5px;border-radius:3px;color:#fff;background-color:#FFBB00;font-family:Malgun Gothic,,dotum,,Gulim,Helvetica,AppleGothic,Tahoma,Verdana;}.approvalOpinionCode4{padding:0px 5px 2px 5px;border-radius:3px;color:#fff;background-color:#F66;font-family:Malgun Gothic,,dotum,,Gulim,Helvetica,AppleGothic,Tahoma,Verdana;}.approvalOpinionCode5{padding:0px 5px 2px 5px;border-radius:3px;color:#fff;background-color:#9FC93C;font-family:Malgun Gothic,,dotum,,Gulim,Helvetica,AppleGothic,Tahoma,Verdana;}.approvalOpinionCode6{padding:0px 5px 2px 5px;border-radius:3px;color:#fff;background-color:#FFBB00;font-family:Malgun Gothic,,dotum,,Gulim,Helvetica,AppleGothic,Tahoma,Verdana;}.approvalOpinionCode7{padding:0px 5px 2px 5px;border-radius:3px;color:#fff;background-color:#A566FF;font-family:Malgun Gothic,,dotum,,Gulim,Helvetica,AppleGothic,Tahoma,Verdana;}.approvalOpinionCode8{padding:0px 5px 2px 5px;border-radius:3px;color:#fff;background-color:#F66;font-family:Malgun Gothic,,dotum,,Gulim,Helvetica,AppleGothic,Tahoma,Verdana;}.approvalOpinionCode9{padding:0px 5px 2px 5px;border-radius:3px;color:#fff;background-color:#aeb2bd;font-family:Malgun Gothic,,dotum,,Gulim,Helvetica,AppleGothic,Tahoma,Verdana;}.F_12_black_b{color:#000;font-size:12px;font-weight:bold;}.F_11_gray{color:#999;font-size:12px;font-weight:100;}.fileIcon{display:inline-block;width:16px;height:16px;background-repeat:no-repeat;text-indent:-9999px;}.file_folder{background:url(../../resource/image/common/diskfile_ico.png) 0 -10px;}.file_folder_share{background:url(../resource/image/common/diskfile_ico.png) -258px -10px;}.file_image{background:url(../../resource/image/common/diskfile_ico.png) -21px -10px;}.file_zip{background:url(../../resource/image/common/diskfile_ico.png) -42px -10px;}.file_hwp{background:url(../../resource/image/common/diskfile_ico.png) -63px -10px;}.file_xls{background:url(../../resource/image/common/diskfile_ico.png) -83px -10px;}.file_txt{background:url(../../resource/image/common/diskfile_ico.png) -104px -10px;}.file_exe{background:url(../../resource/image/common/diskfile_ico.png) -125px -10px;}.file_pdf{background:url(../../resource/image/common/diskfile_ico.png) -147px -10px;}.file_html{background:url(../../resource/image/common/diskfile_ico.png) -170px -10px;}.file_ppt{background:url(../../resource/image/common/diskfile_ico.png) -193px -10px;}.file_ect{background:url(../../resource/image/common/diskfile_ico.png) -215px -10px;}.file_doc{background:url(../../resource/image/common/diskfile_ico.png) -237px -10px;}.o-i-min-fileList{background:url(../../resource/image/common/ico_notice.png) no-repeat;width:13px;height:17px;}.disInline{display:inline-block}.dispNone{display:none;}.verti_Top{vertical-align:top;}.o-i-view-minu{display:inline-block;background:url(../../images/mai/ico_btn_minu.png) no-repeat;width:14px;height:14px;text-indent:-9999px;cursor:pointer;margin-top:2px}.o-i-view-plus{display:inline-block;background:url(../../images/mai/ico_btn_plus.png) no-repeat;width:14px;height:14px;text-indent:-9999px;cursor:pointer;margin-top:2px}.abc-box{position:relative;padding:10px;border:1px solid #c5c5c5;-moz-border-radius:4px;-webkit-border-radius:4px;border-radius:4px;background-color:#fff;box-shadow:0 1px 2px rgba(0,0,0,0.6)}</style>')
+WHERE doc_body IS NOT NULL;
+
+-- 확인
+SELECT
+    (LENGTH(doc_body) - LENGTH(REPLACE(doc_body, '<style', ''))) / LENGTH('<style') AS style_tag_count,
+    COUNT(*) as cnt
+FROM documents
+WHERE doc_body IS NOT NULL
+GROUP BY style_tag_count;
+```
+---
 ### 4. 데이터 검증
 
 #### `verify_action_type.ipynb`
@@ -484,7 +506,7 @@ OUTPUT_FILE = "documents_09.cmds"
 ```
 
 ---
-
+❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗여기서부터 ❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗
 ## 실행 순서 가이드
 
 ### Phase 1: 조직도 데이터 준비
@@ -501,30 +523,40 @@ OUTPUT_FILE = "documents_09.cmds"
 
 ### Phase 3: 데이터 구조 변환
 ```
-5. update_db_referrers.ipynb    → referrers 형식 변환
-6. attaches_transform.ipynb     → 첨부파일 경로 변환
-7. fix_activities_order_db3.ipynb → activities 정렬 및 공백 제거
+5. update_db_referrers.ipynb      → referrers 형식 변환
+6. fix_activities_order_db3.ipynb → activities 정렬 및 공백 제거
 ```
 
-### Phase 4: 이미지 및 특수 처리
+### Phase 4: 첨부파일 처리
 ```
-8. convert_base64_images_db.ipynb → base64 이미지 변환
-9. cleanup_office_images.ipynb    → 레거시 이미지 태그 제거
-10. RETURN 변환.ipynb             → 반려 상태 변환
-```
-
-### Phase 5: 검증 및 보정
-```
-11. verify_action_type.ipynb   → actionType 검증/수정
-12. 결재의견누락.ipynb          → 누락 의견 복구
-13. add_year_column.ipynb      → year 컬럼 추가
+7. empty_path_export.ipynb      → 누락 첨부파일 목록 추출 (CSV 저장)
+   ↓ [수동] Java 크롤러(AnyFivePlusCrawler_attaches.java)로 누락 파일 다운로드
+8. attaches_transform.ipynb     → 첨부파일 경로 변환
 ```
 
-### Phase 6: 내보내기
+### Phase 5: 이미지 처리
 ```
-14. export_documents_v2.ipynb  → .cmds 파일 생성
+   ⚠️ [수동] base64 이미지 16개 사전 다운로드 (상세: 3-2. 이미지 처리 참조)
+9. convert_base64_images_db.ipynb  → base64 이미지 변환
+10. cleanup_office_images.ipynb    → 레거시 이미지 태그 제거
+   ⚠️ [수동] 개별 이미지 태그 수정/삭제 (상세: 수동으로 DB에서 수정해야하는 이미지 목록 참조)
+   ⚠️ [SQL] 이미지 경로 일괄 변경 쿼리 실행
+```
+### 스타일태그 처리
+
+### Phase 6: 검증 및 보정
+```
+11. verify_action_type.ipynb   → actionType 검증/수정 (RETURN 상태로 변환)
+12. RETURN 변환.ipynb          → RETURN → APPROVAL 변환 및 [반려] prefix 추가
+    ※ 반드시 11번 실행 후 실행
+13. 결재의견누락.ipynb          → 누락 의견 복구
+14. add_year_column.ipynb      → year 컬럼 추가
 ```
 
+### Phase 7: 내보내기
+```
+15. export_documents_v2.ipynb  → .cmds 파일 생성
+```
 ---
 
 ## 주의사항
