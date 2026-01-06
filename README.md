@@ -257,17 +257,24 @@ DB_CONFIG = {
 ---
 
 ### 3-2. 이미지 처리
-
+- 수정 전 // 총 <img 태그 수1,473개/전체 문서 수23,320개/이미지가 포함된 문서 수1,042개
+- 수정 후 // 총 <img 태그 수 1246개
+  
 #### `convert_base64_images_db.ipynb`
 **목적**
 - doc_body 내 base64 인코딩 이미지를 파일 경로로 변환
-
-❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗여기서부터 ❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗❗
 
 **사전작업**
 - base64 데이터를 실제 이미지 파일로 저장 ( 사이트에 접속해서 수동으로 다운받아야합니다. approval_2020_img/apr{source_id}/0.jpg 형식으로 저장해야합니다.)
 - 2020년도 16개 이미지가 대상입니다. source_id(문서번호) 2978801, 2983943, 2985244, 3091219, 3097823, 3120072, 3187289, 3190258, 3202897, 3271155, 3288192, 3307760, 5637771, 5641483, 5649101, 5810171
 - 각 source_id마다 이미지가 1개만 있습니다. approval_2020_img 폴더 안에 apr문서번호 폴더 안에 다운받은 이미지를 0.jpg로 저장해주세요
+```
+-- 1. DB에 검색
+SELECT * FROM documents WHERE source_id = '2978801';
+-- 2. 문서 파악 완료 후, 소스페이지 URL (https://auth.onnet21.com/?re=anyfive.onnet21.com/sso/login)에 접속하여 연도 설정 및 문서번호(doc_num) 기준 검색 진행. 이후 제목, 기안자, 날짜 등 주요 항목이 DB와 일치하는지 대조 확인 한 후 이미지 다운로드
+-- 3. 16개의 문서를 같은방식으로 다운로드
+-- 4. 다운받은 경로를  approval_2020_img/apr{source_id}/0.jpg 으로 변경
+```
 
 **기능**:
 - `<img src="data:image/jpeg;base64,...">` 패턴 검색
@@ -298,13 +305,20 @@ DB_CONFIG = {
 
 **처리 결과**: 210개 문서에서 219개 이미지 태그 제거
 ---
-### 수동으로 DB에서 수정해야하는 이미지 목록
-- 수정 전 // 총 <img 태그 수1,473개/전체 문서 수23,320개/이미지가 포함된 문서 수1,042개
-- 수정 후 // 총 <img 태그 수 1246개
 
+### 수동으로 DB에서 수정해야하는 이미지 목록
+- 사이트에 해당 source_id 문서 상세페이지로 접속해서 이미지를 수동으로 다운받아야합니다
+```
+-- 1. DB에 검색
+SELECT * FROM documents WHERE source_id = '2002936';
+-- 2. 문서 파악 완료 후, 소스페이지 URL (https://auth.onnet21.com/?re=anyfive.onnet21.com/sso/login)에 접속하여 연도 설정 및 문서번호(doc_num) 기준 검색 진행. 이후 제목, 기안자, 날짜 등 주요 항목이 DB와 일치하는지 대조 확인 한 후 이미지 다운로드
+-- 3. 다른 문서도 같은방식으로 다운로드
+-- 4. 다운받은 경로를 안내와같이 변경
+-- 경로 변경 후 태그가 <img height="13" src="/PMS_SITE-U7OI43JLDSMO/approval/attach/approval_2015_img/apr2002936/0.jpg" width="57"/>이라면 approval_2015_img 폴더 안에 apr2002936폴더 안에 0.jpg로 해당 이미지가 저장되어있어야합니다.
+```
 #### 경로 변경
 
-**2002936**
+**source_id 2002936**
 ```html
 <img height="13" src="http://image5.compuzone.co.kr/img/images/basket/basketcomp_litsT3.gif" width="57"/>
 ```
@@ -315,7 +329,7 @@ DB_CONFIG = {
 
 ---
 
-**2008214** (실제로는 이미지 없음)
+**source_id 2008214** (확인 결과, 해당 이미지가 실제로 존재하지 않는 것으로 파악되었습니다. 해당 이미지 태그 삭제를 진행해도 무방할 것으로 판단됩니다.)
 ```html
 <img border="0" src="/PMS_SITE-U7OI43JLDSMO/approval/approval_2015_new_img/apr2008214/0.jpg">
 ```
@@ -353,25 +367,29 @@ DB_CONFIG = {
 ---
 
 #### 삭제
+```
+-- 1. DB에 검색
+SELECT * FROM documents WHERE source_id = '2008292';
+-- 2. DB에서 해당 문서 doc_body의 이미지태그 삭제 후 저장
+```
+**source_id 2008292**: 1개
 
-**2008292**: 1개
-
-**4건 (16403803, 16859308(2개), 18499144)** → 삭제
+**4건 (source_id 16403803, 16859308(2개), 18499144)** → 삭제
 ```html
 <img alt=\"\" class=\"from\" src=\"\"/>
 ```
 
-**1건 (25608213)** → 삭제
+**1건 ( source_id 25608213)** → 삭제
 ```html
 <img alt=\"\" src=\"\" style=\"vertical-align: baseline; border: 0px solid rgb(0, 0, 0); width: 335.994px; height: 305.994px;\"/>
 ```
 
-**1건 (25608213)** → 삭제
+**1건 (source_id 25608213)** → 삭제
 ```html
 <img alt=\"\" src=\"\" style=\"vertical-align: baseline; border: 0px solid rgb(0, 0, 0); width: 340px; height: 300px;\"/>
 ```
 
-**1건 (12102242)** → 삭제
+**1건 (source_id 12102242)** → 삭제
 ```html
 <img class=\"txc-image\" id=\"tx_entry_64832_\" src=\"\" style=\"clear: none; float: none;\"/>
 ```
@@ -398,8 +416,6 @@ SET doc_body = REPLACE(doc_body,
                        'src="/PMS_SITE-U7OI43JLDSMO/approval/attach/approval_')
 WHERE doc_body LIKE '%src="approval_%';
 ```
-
-
 
 ---
 
@@ -444,11 +460,6 @@ WHERE doc_body LIKE '%src="approval_%';
 
 ---
 
-#### `comment_validation.ipynb`
-**목적**: 결재의견 데이터 무결성 검증
-
----
-
 ### 5. 문서 내보내기
 
 #### `export_documents_v2.ipynb`
@@ -471,21 +482,6 @@ TARGET_YEAR = [2024, 2025]
 ATTEMPT_NUMBER = 9
 OUTPUT_FILE = "documents_09.cmds"
 ```
-
----
-
-## 데이터 파일
-
-| 파일명 | 설명 |
-|--------|------|
-| `in_employee.csv` | 재직자 명단 (167명) |
-| `out_employee.csv` | 퇴사자 명단 (336명) |
-| `attaches_backup_*.csv` | attaches 변환 전 백업 |
-| `base64_images_before_*.txt` | base64 이미지 변환 전 목록 |
-| `empty_path_documents_*.csv` | 빈 경로 첨부파일 문서 목록 |
-| `office_anyfive_images_*.txt` | office.anyfive.com 이미지 목록 |
-| `actionType_불일치목록.csv` | actionType 불일치 문서 목록 |
-| `actionComment_누락목록.csv` | 결재의견 누락 문서 목록 |
 
 ---
 
