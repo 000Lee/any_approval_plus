@@ -138,7 +138,7 @@ DB_CONFIG = {
 #### `RETURN 변환.ipynb`
 **목적**: 반려(RETURN) 결재 상태를 승인(APPROVAL)으로 변환하고 의견에 [반려] 표시
 - 반려 상태 데이터 확인 후 RETURN으로 변경하였으나, 이관 시스템 호환성 이슈로 APPROVAL로 처리하고 의견 앞에 [반려] 표기 추가
-- [verify_action_type.ipynb](### verify_action_type.ipynb): RETURN 상태로 변환  /  RETURN 변환.ipynb: RETURN → APPROVAL 변환 및 의견에 [반려] prefix 추가
+- [verify_action_type.ipynb](##verify_action_type.ipynb): RETURN 상태로 변환  /  RETURN 변환.ipynb: RETURN → APPROVAL 변환 및 의견에 [반려] prefix 추가
 - => ! verify_action_type.ipynb 실행 후 RETURN 변환.ipynb 실행해야합니다.!
 
 **기능**:
