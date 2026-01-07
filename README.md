@@ -220,7 +220,7 @@ DB_CONFIG = {
 
 ### 3-1. 첨부파일 처리
 - 고객사가 제공한 다운로드 파일에 첨부파일 97개(문서로는 85건)가 없습니다.
-- empty_path_export.ipynb로 path:""를 조회한 후 csv로 저장하여 [AnyFivePlusCrawler_attaches.java](https://github.com/000Lee/any_crawling.git)를 통해 누락된 첨부파일을 크롤링 합니다.
+- empty_path_export.ipynb로 path:""를 조회한 후 csv로 저장하여 [any_crawling](https://github.com/000Lee/any_crawling.git)의 AnyFivePlusCrawler_attaches.java를 통해 누락된 첨부파일을 크롤링 합니다.
 - 데이터 오류 방지를 위해 99개 대상으로 모두 다운로드 시도하였으나 1건의 문서는 실패하여 수동으로 처리하였습니다. 
 - 이는 apr11213102으로 해당 문서 총 2건중에 1건은 이전에 수집했던 approval_2020_attachments 경로에 있습니다.
 - "path":"/PMS_SITE-U7OI43JLDSMO/approval/approval_plus_attachments/ 경로인것이 98개 
